@@ -1,6 +1,25 @@
 # removeOrphans
 
-A vanilla Javascript utility that prevents words from appearing on their own new line.
+A vanilla Javascript utility that prevents words from appearing on their own new line (known as orphans or widows.) It's light, smart, and doesn't require any external libraries.
+- It's light: Just 553 bytes minified. All it does it put a non-breaking space, `&nbsp;`, between the last words in an element. Super simple.
+- It's smart: It notices HTML entites and skips them, preventing disasters like `<strong&nbsp;class=...>`.
+- It's vanilla: No external dependencies. Just plain old Javascript written to work in all major browsers.
+
+## Example
+
+Without `removeOrphans`:
+
+```
+I'm an element whose text wraps around to a new
+line
+```
+
+With `removeOrphans`:
+
+```
+I'm an element whose text wraps around to a
+new line
+```
 
 ## How to use it
 
@@ -19,7 +38,11 @@ Define these values by passing in an object, e.g.
 
 `removeOrphans('h1, h2, h3', { allowedLength: 10, siblings: 2 })`
 
-This call will remove orphaned words on top-, second-, and third-level headings, skipping those that end in words with 10 or more characters (punctuation included), ensuring that at least three words end on the same line (due to requiring 2 siblings).
+This call will remove orphaned words on top-, second-, and third-level headings, skipping those that end in words with 10 or more characters (punctuation included), ensuring that at least three words end on the same line (due to requiring 2 siblings.)
+
+## Caution!
+
+This utility works by changing the `innerHTML` of elements, so call `removeOrphans` before binding events to elements.
 
 ## Providing Different Options on Elements
 
