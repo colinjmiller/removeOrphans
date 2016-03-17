@@ -32,13 +32,18 @@ The `window` now contains `removeOrphans(CSS selector [, parameters])`
 Calling `removeOrphans('h1, h2')` will add a non-breaking space between the last two words in top- and second-level headings, preventing those elements from having orphans.
 `removeOrphans` also takes a second parameter, which can define these properties:
 - `allowedLength`: If the final word in an element is beyond this length then that element will be skipped. Useful if the last word would look okay on its own line.
-- `siblings`: Be default, the orphan will have one sibling on the new line. If more than one is required, set sibling to control how many words should accompany the orphan on the new line.
+- `siblings`: By default, the orphan will have one sibling on the new line. If more than one is wanted, set sibling to control how many words should accompany the orphan on the new line.
 
 Define these values by passing in an object, e.g.
 
 `removeOrphans('h1, h2, h3', { allowedLength: 10, siblings: 2 })`
 
 This call will remove orphaned words on top-, second-, and third-level headings, skipping those that end in words with 10 or more characters (punctuation included), ensuring that at least three words end on the same line (due to requiring 2 siblings.)
+
+```
+I'm a heading element whose text wraps around to
+a new line
+```
 
 ## Caution!
 
