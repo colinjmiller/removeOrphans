@@ -21,5 +21,15 @@ Define these values by passing in an object, e.g.
 
 This call will remove orphaned words on top-, second-, and third-level headings, skipping those that end in words with 10 or more characters (punctuation included), ensuring that at least three words end on the same line (due to requiring 2 siblings).
 
+## Providing Different Options on Elements
+
+If you need to provide different options depending on the element, call removeOrphans as many times as you need:
+
+```
+removeOrphans('h1, h2');
+removeOrphans('p', { siblings: 2 });
+removeOrphans('.another-class, #another-id', { allowedLength: 12 });
+```
+
 ## Browser Compatibility
 Chrome, Firefox, Safari, Opera, Edge, and IE 8-11.
